@@ -1,0 +1,31 @@
+
+ #include "stdio.h"
+ #include "locale.h"
+ #include "stdlib.h"
+ 
+
+char string[5][50];
+
+void input_string();
+ 
+
+int main(i)
+ {
+ 	setlocale(LC_CTYPE, "rus");
+
+	input_string();
+	system("pause");
+ 	return 0;
+ }
+ void input_string(){
+	printf("Вводите строки. \n");
+	int i;
+	for (i = 0; i < 5; i++){
+		printf("Введите строку номер%d: ", i + 1);
+		gets_s(string[i]);
+	}
+Add a comment to this line
+	for (i = 0; i < 5; i++){
+		printf("Строка №%d: %s\n", i+1, string[i]);
+	}
+}
