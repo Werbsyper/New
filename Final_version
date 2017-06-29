@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+char string[5][50];
+int i, k[10], vibor;
+int m = 0;
+
+void input_string();
+void search_string();
+void con_string();
+void output_chose();
+
+
+int main()
+{
+	setlocale(LC_CTYPE, "rus");
+
+	printf("Вводите строки. \n");
+
+	input_string();
+	search_string();
+	con_string();
+	output_chose();
+	return 0;
+}
+void input_string() {
+	for (i = 0; i < 5; i++) {
+		printf("Введите строку номер %d: ", i);
+		gets_s(string[i]);
+	}
+}
+void search_string() {
+	for (i = 0; i < 5; i++) {
+		printf("Введите номер искомой строки - 0,или вывод всех строк - 1 :");
+		scanf_s("%d", &vibor);
+		if (vibor == 0) {
+			printf("Введите номер искомой строки: ");
+			scanf_s("%d", &k[m]);
+			printf("Строка,которую вы ищите: %s\n", string[k[m]]);
+			m++;
+		}
+
+		if (vibor == 1) {
+			for (i = 0; i < 5; i++) {
+				printf("Строка № %d: %s\n", i, string[i]);
+			}
+		}
+
+	}
+}
+void con_string() {
+	int a, b;
+	printf("Введите номера строк для объеденения: ");
+	scanf_s("%d%d",&a,&b);
+	strcat_s(string[a], string[b]);
+	printf("Result: %s\n", string[a]);
+	}
+void output_chose()
+{
+	char exemple[50];
+	printf("Введите строку, номер которой вы хотите получить:");
+	gets_s(exemple);
+	gets_s(exemple);
+	for(int i=0;i<5;i++){
+		if(strcmp(exemple,string[i])==0){
+			printf("Номер искомой строки:%i\n",i);
+			return;}}
+	printf("-1-Cтрока не найдена");
+
+
+}
