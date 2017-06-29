@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include "stdio.h" 
+#include "locale.h" 
+#include "string.h" 
+#include "stdlib.h" 
+#define N 2 
+
+char string[N][50];
+
+void input_string();
+void stringCat(char str1[N], char str2[N]);
+
+int main(int argc, char argv[])
+{
+	int numb_str[1];
+	setlocale(LC_CTYPE, "rus");
+	input_string();
+	printf("Введите номер строк для объеденения: ");
+	scanf_s("%d", &numb_str[0]);
+	scanf_s("%d", &numb_str[1]);
+	stringCat(string[numb_str[0]], string[numb_str[0]]);
+	for (int i = 0; i < N; i++){
+		printf("Строка №%d: %s\n", i + 1, string[i]);
+	}
+	return 0;
+}
+
+void input_string(){
+	printf("Введите %d строк. \n", N);
+	int i;
+	for (i = 0; i < N; i++){
+		printf("Введите строку №%d: ", i + 1);
+		gets_s(string[i]);
+	}
+	for (i = 0; i < N; i++){
+		printf("Строка №%d: %s\n", i + 1, string[i]);
+	}
+}
+
+void stringCat(char str1[N], char str2[N])
+{
+	strcat(str1, " ");
+	strcat(str1, str2);
+}
